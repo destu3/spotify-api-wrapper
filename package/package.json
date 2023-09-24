@@ -1,0 +1,23 @@
+{
+  "name": "spotify-wrapper",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A lightweight Spotify API wrapper, offering easy-to-use methods for common Spotify API functionalities.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/destu3/spotify-api-wrapper"
+  },
+  "keywords": [
+    "spotify",
+    "api",
+    "wrapper",
+    "Node.js",
+    "music"
+  ],
+  "author": "",
+  "license": "ISC"
+}
