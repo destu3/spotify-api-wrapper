@@ -36,6 +36,11 @@ class NetworkUtils {
     const body = res.json();
     return body;
   }
+
+  static appendQueryParams(url, queryStringParams) {
+    const queryParams = new URLSearchParams(queryStringParams).toString();
+    return `${url}?${queryParams}`;
+  }
 }
 
 export default NetworkUtils;

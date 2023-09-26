@@ -62,7 +62,6 @@ class AuthHandler {
   async verifyToken() {
     if (!this.accessToken || this.tokenExpired()) {
       await this.requestAccessToken();
-      console.log('Token set');
       return false;
     }
     return true;
