@@ -4,6 +4,7 @@ import Artist from './classes/resources/Artist.js';
 import Playlist from './classes/resources/Playlist.js';
 import Track from './classes/resources/Track.js';
 import NetworkUtils from './classes/utils/NetworkUtils.js';
+import User from './classes/resources/User.js';
 
 /**
  * A class for making API requests to Spotify.
@@ -253,12 +254,31 @@ class SpotifyWrapper {
     await this.authHandler.verifyToken();
     return Track.getAvailableGenreSeeds(this.authHandler.accessToken);
   }
-}
 
-const spotify = new SpotifyWrapper(
-  'c6cf84ef0f014c01864474b70710957c',
-  '0c9710edd91846db995e69416dc62eab'
-);
-console.log(await spotify.getTracksAudioFeatures('7857CYwkPlbJVsY00GxuSK'));
+  /**
+   * Get public profile information about a Spotify user.
+   * @param {string} id - The user's Spotify user ID.
+   * @returns {Promise<any>} A Promise that resolves with a users public profile information or error information.
+   */
+  async getUsersProfile(id) {
+    await this.authHandler.verifyToken();
+    return User.getUsersProfile(id, this.authHandler.accessToken);
+  }
+
+  /**
+   * Check to see if one or more Spotify users are following a specified playlist.
+   * @param {string} id - The Spotify ID of the playlist.
+   * @param {object} queryStringParams - Query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with information on whether user(s) follow the playlist or error information.
+   */
+  async checkIfUsersFollowPlaylist(id, queryStringParams) {
+    await this.authHandler.verifyToken();
+    return User.checkIfUsersFollowPlaylist(
+      id,
+      this.authHandler.accessToken,
+      queryStringParams
+    );
+  }
+}
 
 export default SpotifyWrapper;
