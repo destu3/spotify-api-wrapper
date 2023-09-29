@@ -5,7 +5,8 @@
   "description": "A lightweight Spotify API wrapper, offering easy-to-use methods for common Spotify API functionalities.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen-docs": "jsdoc2md index.js"
   },
   "repository": {
     "type": "git",

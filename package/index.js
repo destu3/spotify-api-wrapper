@@ -1,6 +1,7 @@
 import AuthHandler from './classes/utils/AuthHandler.js';
 import Album from './classes/resources/Album.js';
 import Artist from './classes/resources/Artist.js';
+import Playlist from './classes/resources/Playlist.js';
 
 /**
  * A class for making API requests to Spotify.
@@ -18,10 +19,9 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information for a single album.
-   * @param {string} id - The ID of the album to retrieve.
+   * @param {string} id - The Spotify ID of the album.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
-   * @param {string} queryStringParams.market - An ISO 3166-1 alpha-2 country code.
-   * @returns {Promise<any>} A Promise that resolves with album data or error information
+   * @returns {Promise<any>} A Promise that resolves with album data or error information.
    */
   async getAlbum(id, queryStringParams) {
     await this.authHandler.verifyToken();
@@ -31,9 +31,7 @@ class SpotifyWrapper {
   /**
    * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
    * @param {object} queryStringParams - Query string parameters for this endpoint.
-   * @param {string} queryStringParams.ids - A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
-   * @param {string} queryStringParams.market - An ISO 3166-1 alpha-2 country code.
-   * @returns {Promise<any>} A Promise that resolves with a collection of album data or error information
+   * @returns {Promise<any>} A Promise that resolves with a collection of album data or error information.
    */
   async getSeveralAlbums(queryStringParams) {
     await this.authHandler.verifyToken();
@@ -45,12 +43,9 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
-   * @param {string} id - The ID of the album to retrieve.
+   * @param {string} id - The Spotify ID of the album.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
-   * @param {string} queryStringParams.market - An ISO 3166-1 alpha-2 country code.
-   * @param {number} queryStringParams.limit - The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-   * @param {number} queryStringParams.offset - The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-   * @returns {Promise<any>} A Promise that resolves with album tracks or error information
+   * @returns {Promise<any>} A Promise that resolves with album tracks or error information.
    */
   async getAlbumTracks(id, queryStringParams) {
     await this.authHandler.verifyToken();
@@ -63,7 +58,7 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information for a single artist.
-   * @param {string} id - The ID of the artist to retrieve.
+   * @param {string} id - The Spotify ID of the artist.
    * @returns {Promise<any>} A Promise that resolves with artist data or error information.
    */
   async getArtist(id) {
@@ -74,7 +69,6 @@ class SpotifyWrapper {
   /**
    * Get Spotify catalog information for multiple artists identified by their Spotify IDs.
    * @param {object} queryStringParams - Query string parameters for this endpoint.
-   * @param {string} queryStringParams.ids - A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.
    * @returns {Promise<any>} A Promise that resolves with a collection of artist data or error information.
    */
   async getSeveralArtists(queryStringParams) {
@@ -87,12 +81,8 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information about an artist's albums.
-   * @param {string} id - The ID of the artist to retrieve albums for.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
-   * @param {("album"|"single"|"appears_on"|"compilation")} queryStringParams.include_groups - A comma-separated list of keywords that will be used to filter the response. If not supplied, all album types will be returned.
-   * @param {string} queryStringParams.market - An ISO 3166-1 alpha-2 country code.
-   * @param {number} queryStringParams.limit - The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-   * @param {number} queryStringParams.offset - The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
    * @returns {Promise<any>} A Promise that resolves with an artist's album data or error information.
    */
   async getArtistsAlbums(id, queryStringParams) {
@@ -106,9 +96,8 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information about an artist's top tracks.
-   * @param {string} id - The ID of the artist to retrieve top tracks for.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {object} queryStringParams - Query string parameters for this endpoint.
-   * @param {string} queryStringParams.market - An ISO 3166-1 alpha-2 country code (required).
    * @returns {Promise<any>} A Promise that resolves with an artist's top tracks or error information.
    */
   async getArtistsTopTracks(id, queryStringParams) {
@@ -122,12 +111,65 @@ class SpotifyWrapper {
 
   /**
    * Get Spotify catalog information about artists related to a given artist.
-   * @param {string} id - The ID of the artist to retrieve related artists for.
+   * @param {string} id - The Spotify ID of the artist.
    * @returns {Promise<any>} A Promise that resolves with a collection of related artist data or error information.
    */
   async getArtistsRelatedArtists(id) {
     await this.authHandler.verifyToken();
     return Artist.getArtistsRelatedArtists(id, this.authHandler.accessToken);
+  }
+
+  /**
+   * Get a playlist owned by a Spotify user.
+   * @param {string} id - The Spotify ID of the playlist.
+   * @param {object} queryStringParams - Optional query string parameters for this endpoint.
+   * @returns {Promise<any>}  A Promise that resolves with playlist data or error information.
+   */
+  async getPlaylist(id, queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Playlist.getPlaylist(
+      id,
+      this.authHandler.accessToken,
+      queryStringParams
+    );
+  }
+
+  /**
+   * Get a list of Spotify featured playlists.
+   * @param {object} queryStringParams - Optional query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with a collection of featured playlist data or error information.
+   */
+  async getFeaturedPlaylists(queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Playlist.getFeaturedPlaylists(
+      this.authHandler.accessToken,
+      queryStringParams
+    );
+  }
+
+  /**
+   * Get a list of Spotify playlists tagged with a particular category.
+   * @param {string} id - The Spotify category ID.
+   * @param {object} queryStringParams - Optional query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with a collection of category-specific playlist data or error information.
+   */
+  async getCategoryPlaylists(id, queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Playlist.getCategoryPlaylists(
+      id,
+      this.authHandler.accessToken,
+      queryStringParams
+    );
+  }
+
+  /**
+   * Get the current image associated with a specific playlist.
+   * @param {string} id - The Spotify ID of the playlist.
+   * @returns {Promise<any>} A Promise that resolves with playlist cover image data or error information.
+   */
+  async getPlaylistCoverImage(id) {
+    await this.authHandler.verifyToken();
+    return Playlist.getPlaylistCoverImage(id);
   }
 }
 
