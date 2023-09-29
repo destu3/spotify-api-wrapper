@@ -17,7 +17,7 @@ class Album {
 
   /**
    * Get Spotify catalog information for a single album.
-   * @param {string} id - The ID of the album to retrieve.
+   * @param {string} id - The Spotify ID of the album.
    * @param {string} accessToken - The access token for authentication.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
    * @returns {Promise<any>} A Promise that resolves with album data or error information
@@ -43,7 +43,7 @@ class Album {
 
   /**
    * Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
-   * @param {string} id - The ID of the album to retrieve.
+   * @param {string} id - The Spotify ID of the album.
    * @param {string} accessToken - The access token for authentication.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
    * @returns {Promise<any>} A Promise that resolves with album tracks or error information

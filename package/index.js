@@ -2,6 +2,8 @@ import AuthHandler from './classes/utils/AuthHandler.js';
 import Album from './classes/resources/Album.js';
 import Artist from './classes/resources/Artist.js';
 import Playlist from './classes/resources/Playlist.js';
+import Track from './classes/resources/Track.js';
+import NetworkUtils from './classes/utils/NetworkUtils.js';
 
 /**
  * A class for making API requests to Spotify.
@@ -169,8 +171,94 @@ class SpotifyWrapper {
    */
   async getPlaylistCoverImage(id) {
     await this.authHandler.verifyToken();
-    return Playlist.getPlaylistCoverImage(id);
+    return Playlist.getPlaylistCoverImage(id, this.authHandler.accessToken);
+  }
+
+  /**
+   * Get Spotify catalog information about albums, artists, playlists, tracks, shows, episodes or audiobooks that match a keyword string.
+   * @param {object} queryStringParams - Query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with search results.
+   */
+  async search(queryStringParams) {
+    const url = NetworkUtils.appendQueryParams(
+      'https://api.spotify.com/v1/search',
+      queryStringParams
+    );
+    await this.authHandler.verifyToken();
+    return NetworkUtils.makeRequest(url, this.authHandler.accessToken);
+  }
+
+  /**
+   * Get Spotify catalog information for a single track identified by its unique Spotify ID.
+   * @param {string} id - The Spotify ID for the track.
+   * @param {object} queryStringParams - Optional query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with track data or error information.
+   */
+  async getTrack(id, queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Track.getTrack(id, this.authHandler.accessToken, queryStringParams);
+  }
+
+  /**
+   * Get Spotify catalog information for multiple tracks based on their Spotify IDs.
+   * @param {object} queryStringParams - Query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with a collection of track data or error information.
+   */
+  async getSeveralTracks(queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Track.getSeveralTracks(
+      this.authHandler.accessToken,
+      queryStringParams
+    );
+  }
+
+  /**
+   * Get audio feature information for a single track identified by its unique Spotify ID.
+   * @param {string} id - The Spotify ID for the track.
+   * @returns {Promise<any>} A Promise that resolves with audio feature information or error information.
+   */
+  async getTracksAudioFeatures(id) {
+    await this.authHandler.verifyToken();
+    return Track.getTracksAudioFeatures(id, this.authHandler.accessToken);
+  }
+
+  /**
+   * Get a low-level audio analysis for a track in the Spotify catalog.
+   * @param {string} id - The Spotify ID for the track.
+   * @returns {Promise<any>} A Promise that resolves with audio analysis information or error information.
+   */
+  async getTracksAudioAnalysis(id) {
+    await this.authHandler.verifyToken();
+    return Track.getTracksAudioAnalysis(id, this.authHandler.accessToken);
+  }
+
+  /**
+   * Get Spotify track recommendations based on a set of query string parameters.
+   * @param {object} queryStringParams - Query string parameters for this endpoint.
+   * @returns {Promise<any>} A Promise that resolves with recommended tracks or error information.
+   */
+  async getRecommendations(queryStringParams) {
+    await this.authHandler.verifyToken();
+    return Track.getRecommendations(
+      queryStringParams,
+      this.authHandler.accessToken
+    );
+  }
+
+  /**
+   * Retrieve a list of available genre seed parameter values for recommendations.
+   * @returns {Promise<any>} A Promise that resolves with available genre seed parameter values or error information.
+   */
+  async getAvailableGenreSeeds() {
+    await this.authHandler.verifyToken();
+    return Track.getAvailableGenreSeeds(this.authHandler.accessToken);
   }
 }
+
+const spotify = new SpotifyWrapper(
+  'c6cf84ef0f014c01864474b70710957c',
+  '0c9710edd91846db995e69416dc62eab'
+);
+console.log(await spotify.getTracksAudioFeatures('7857CYwkPlbJVsY00GxuSK'));
 
 export default SpotifyWrapper;

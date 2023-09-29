@@ -17,7 +17,7 @@ class Artist {
 
   /**
    * Get Spotify catalog information for a single artist.
-   * @param {string} id - The ID of the artist to retrieve.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {string} accessToken - The access token for authentication.
    * @returns {Promise<any>} A Promise that resolves with artist data or error information.
    */
@@ -39,7 +39,7 @@ class Artist {
 
   /**
    * Get Spotify catalog information about an artist's albums.
-   * @param {string} id - The ID of the artist to retrieve albums for.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {string} accessToken - The access token for authentication.
    * @param {object} queryStringParams - Optional query string parameters for this endpoint.
    * @returns {Promise<any>} A Promise that resolves with artist's album data or error information.
@@ -54,7 +54,7 @@ class Artist {
 
   /**
    * Get Spotify catalog information about an artist's top tracks.
-   * @param {string} id - The ID of the artist to retrieve top tracks for.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {string} accessToken - The access token for authentication.
    * @param {object} queryStringParams - Query string parameters for this endpoint.
    * @returns {Promise<any>} A Promise that resolves with artist's top tracks or error information.
@@ -69,7 +69,7 @@ class Artist {
 
   /**
    * Get Spotify catalog information about artists related to a given artist.
-   * @param {string} id - The ID of the artist to retrieve related artists for.
+   * @param {string} id - The Spotify ID of the artist.
    * @param {string} accessToken - The access token for authentication.
    * @returns {Promise<any>} A Promise that resolves with a collection of related artist data or error information.
    */
