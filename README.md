@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;">
-  <h1 style="margin-right: 10px;">SpotifyWrapper</h1>
-  <img src="https://www.freeiconspng.com/uploads/spotify-icon-18.png" alt="Spotify Icon" height="35" width="35" />
+  <img src="https://www.freeiconspng.com/uploads/spotify-icon-18.png" alt="Spotify Icon" height="40" width="40" />
+  <h1 style="margin-left: 10px;">SpotifyWrapper Library</h1>
 </div>
 
 1. [Introduction](#introduction)
@@ -324,11 +324,11 @@ Get a list of Spotify featured playlists.
 | ----------------- | ------ | -------------------------------------------------- |
 | queryStringParams | object | Optional query string parameters for this endpoint |
 
+Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
+
 #### Returns
 
 A Promise that resolves with a collection of featured playlist data or error information.
-
-Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 ```javascript
 spotify
@@ -408,11 +408,11 @@ Get Spotify catalog information about albums, artists, playlists, tracks, shows,
 | ----------------- | ------ | ----------------------------------------- |
 | queryStringParams | object | Query string parameters for this endpoint |
 
+Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/search" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
+
 #### Returns
 
 A Promise that resolves with search results or error information.
-
-Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/search" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 ```javascript
 spotify

@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;">
-  <h1 style="margin-right: 10px;">SpotifyWrapper</h1>
-  <img src="https://www.freeiconspng.com/uploads/spotify-icon-18.png" alt="Spotify Icon" height="35" width="35" />
+  <img src="https://www.freeiconspng.com/uploads/spotify-icon-18.png" alt="Spotify Icon" height="40" width="40" />
+  <h1 style="margin-left: 10px;">SpotifyWrapper Library</h1>
 </div>
 
 1. [Introduction](#introduction)
@@ -62,6 +62,8 @@ Get Spotify catalog information for a single album.
 | id                | string | The Spotify ID of the album                        |
 | queryStringParams | object | Optional query string parameters for this endpoint |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-album" target="_blank">Spotify Web API documentation</a>
 for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -92,6 +94,8 @@ Get Spotify catalog information for multiple albums identified by their Spotify 
 | ----------------- | ------ | ------------------------------------------ |
 | queryStringParams | object | Query string parameters for this endpoint. |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-multiple-albums" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 #### Returns
@@ -121,6 +125,8 @@ Get Spotify catalog information about an album's tracks.
 | ----------------- | ------ | -------------------------------------------------- |
 | id                | string | The Spotify ID of the album                        |
 | queryStringParams | object | Optional query string parameters for this endpoint |
+
+<br>
 
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-albums-tracks" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -178,6 +184,8 @@ Get Spotify catalog information for multiple artists identified by their Spotify
 | ----------------- | ------ | ----------------------------------------- |
 | queryStringParams | object | Query string parameters for this endpoint |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-multiple-artists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 #### Returns
@@ -208,6 +216,8 @@ Get Spotify catalog information about an artist's albums.
 | id                | string | The Spotify ID of the artist                       |
 | queryStringParams | object | Optional query string parameters for this endpoint |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-artists-albums" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 #### Returns
@@ -237,6 +247,8 @@ Get Spotify catalog information about an artist's top tracks.
 | ----------------- | ------ | ----------------------------------------- |
 | id                | string | The Spotify ID of the artist              |
 | queryStringParams | object | Query string parameters for this endpoint |
+
+<br>
 
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-artists-top-tracks" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -295,6 +307,8 @@ Get a playlist owned by a Spotify user.
 | id                | string | The Spotify ID of the playlist.                    |
 | queryStringParams | object | Optional query string parameters for this endpoint |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlist" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 #### Returns
@@ -324,11 +338,13 @@ Get a list of Spotify featured playlists.
 | ----------------- | ------ | -------------------------------------------------- |
 | queryStringParams | object | Optional query string parameters for this endpoint |
 
+<br>
+
+Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
+
 #### Returns
 
 A Promise that resolves with a collection of featured playlist data or error information.
-
-Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 ```javascript
 spotify
@@ -351,6 +367,8 @@ Get a list of Spotify playlists tagged with a particular category.
 | ----------------- | ------ | -------------------------------------------------- |
 | id                | string | The Spotify category ID.                           |
 | queryStringParams | object | Optional query string parameters for this endpoint |
+
+<br>
 
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-categories-playlists" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -408,11 +426,13 @@ Get Spotify catalog information about albums, artists, playlists, tracks, shows,
 | ----------------- | ------ | ----------------------------------------- |
 | queryStringParams | object | Query string parameters for this endpoint |
 
+<br>
+
+Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/search" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
+
 #### Returns
 
 A Promise that resolves with search results or error information.
-
-Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/search" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 ```javascript
 spotify
@@ -435,6 +455,8 @@ Get Spotify catalog information for a single track identified by its unique Spot
 | ----------------- | ------ | -------------------------------------------------- |
 | id                | string | The Spotify ID for the track                       |
 | queryStringParams | object | Optional query string parameters for this endpoint |
+
+<br>
 
 Refer to the Spotify <a href="https://developer.spotify.com/documentation/web-api/reference/get-track" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -464,6 +486,8 @@ Get Spotify catalog information for multiple tracks based on their Spotify IDs.
 | parameter         | type   | description                                |
 | ----------------- | ------ | ------------------------------------------ |
 | queryStringParams | object | Query string parameters for this endpoint. |
+
+<br>
 
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-several-tracks" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
@@ -548,6 +572,8 @@ Get Spotify track recommendations based on a set of query string parameters.
 | ----------------- | ------ | ------------------------------------------ |
 | queryStringParams | object | Query string parameters for this endpoint. |
 
+<br>
+
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/get-several-tracks" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
 #### Returns
@@ -627,6 +653,8 @@ Check to see if one or more Spotify users are following a specified playlist.
 | ----------------- | ------ | ------------------------------------------ |
 | id                | string | The Spotify ID of the playlist.            |
 | queryStringParams | object | Query string parameters for this endpoint. |
+
+<br>
 
 Refer to the <a href="https://developer.spotify.com/documentation/web-api/reference/check-if-user-follows-playlist" target="_blank">Spotify Web API documentation</a> for a comprehensive rundown of authorized query string parameters for this endpoint. To utilize them, format these parameters as a JavaScript object and pass them via the `queryStringParams` argument.
 
