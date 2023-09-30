@@ -1,7 +1,7 @@
 {
   "name": "@destu/spotify-wrapper",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A lightweight Spotify API wrapper, offering easy-to-use methods for common Spotify API functionalities.",
   "main": "index.js",
   "scripts": {

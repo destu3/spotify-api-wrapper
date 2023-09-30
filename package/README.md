@@ -1,7 +1,4 @@
-<div style="display: flex; align-items: center;">
-  <img src="https://www.freeiconspng.com/uploads/spotify-icon-18.png" alt="Spotify Icon" height="40" width="40" />
-  <h1 style="margin-left: 10px;">SpotifyWrapper Library</h1>
-</div>
+# SpotifyWrapper
 
 1. [Introduction](#introduction)
 2. [Disclaimer](#disclaimer)
